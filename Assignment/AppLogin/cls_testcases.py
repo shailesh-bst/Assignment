@@ -42,10 +42,8 @@ class App(unittest.TestCase):
             "android.webkit.WebView/android.webkit.WebView/android.view.View[2]/android.view.View/android.view.View[3]"
             "/android.view.View[2]/android.widget.Button[1]")
         authorize_btn.click()
-        assert not self.driver.find_element_by_xpath(
-        "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
-        "android.webkit.WebView/android.webkit.WebView/android.view.View[2]/android.view.View/android.view.View[3]"
-        "/android.view.View[2]/android.widget.Button[1]")
+        self.driver.implicitly_wait(5)
+        assert not authorize_btn.is_enabled()
     
      def test_home_page(self):
          self.driver.implicitly_wait(10)
