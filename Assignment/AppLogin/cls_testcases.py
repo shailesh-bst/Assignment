@@ -1,9 +1,7 @@
 from appium import webdriver
 import unittest
-import config
 import gametv_download
 import HtmlTestRunner
-import time
 
 
 class App(unittest.TestCase):
@@ -48,14 +46,14 @@ class App(unittest.TestCase):
         "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
         "android.webkit.WebView/android.webkit.WebView/android.view.View[2]/android.view.View/android.view.View[3]"
         "/android.view.View[2]/android.widget.Button[1]")
-    #
-    # def test_home_page(self):
-    #     gametv_download.login_app(self.driver)
-    #     self.driver.implicitly_wait(10)
-    #     assert self.driver.find_element_by_xpath(
-    #         "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
-    #         "android.webkit.WebView/android.webkit.WebView/android.view.View[2]/android.view.View/android.view."
-    #         "View[3]/android.view.View[1]/android.view.View[1]/android.widget.EditText").is_displayed() is False
+    
+     def test_home_page(self):
+         gametv_download.login_app(self.driver)
+         self.driver.implicitly_wait(10)
+         assert self.driver.find_element_by_xpath(
+             "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
+             "android.webkit.WebView/android.webkit.WebView/android.view.View[2]/android.view.View/android.view."
+             "View[3]/android.view.View[1]/android.view.View[1]/android.widget.EditText").is_displayed() is False
 
     @classmethod
     def tearDownClass(cls):
@@ -63,4 +61,4 @@ class App(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='..\\'))
