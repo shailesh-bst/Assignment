@@ -41,3 +41,25 @@ def download_app(desired_cap):
     except Exception as e:
         print(e)
 
+
+def login_app(driver):
+    try:
+        username = driver.find_element_by_xpath(
+            "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
+            "android.webkit.WebView/android.webkit.WebView/android.view.View[2]/android.view.View/android.view."
+            "View[3]/android.view.View[1]/android.view.View[1]/android.widget.EditText")
+        username.send_keys("tes1.auto1@gmail.com")
+        password = driver.find_element_by_xpath(
+            "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
+            "android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[3]"
+            "/android.view.View[1]/android.view.View[2]/android.widget.EditText")
+        password.send_keys("game@twitter")
+        authorize_btn = driver.find_element_by_xpath(
+            "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
+            "android.webkit.WebView/android.webkit.WebView/android.view.View[2]/android.view.View/android.view.View[3]"
+            "/android.view.View[2]/android.widget.Button[1]")
+        authorize_btn.click()
+        return "Successful"
+
+    except Exception as e:
+        return e + " Failed"
