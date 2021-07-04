@@ -8,8 +8,8 @@ class App(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # cls.desired_cap = config.desired_cap_playstore
-        # gametv_download.download_app(cls.desired_cap)
+        cls.desired_cap = config.desired_cap_playstore
+        gametv_download.download_app(cls.desired_cap)
         cls.desired_cap = config.desired_cap_gametv
         cls.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities=cls.desired_cap)
         cls.driver.implicitly_wait(40)
