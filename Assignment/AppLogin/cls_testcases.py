@@ -48,7 +48,6 @@ class App(unittest.TestCase):
         "/android.view.View[2]/android.widget.Button[1]")
     
      def test_home_page(self):
-         gametv_download.login_app(self.driver)
          self.driver.implicitly_wait(10)
          assert self.driver.find_element_by_xpath(
              "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
