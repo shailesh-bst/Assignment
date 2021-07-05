@@ -1,6 +1,6 @@
 import logging
 
-logging.basicConfig(filename="..\\logger.log", level=logging.DEBUG, filemode='w')
+logging.basicConfig(filename=".\\logger.log", level=logging.DEBUG, filemode='w')
 logger = logging.getLogger()
 
 desired_cap_playstore = {
