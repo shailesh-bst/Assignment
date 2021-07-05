@@ -1,35 +1,31 @@
-import requests
+import json
 import config
 
 
-base_url = "http://api.openweathermap.org/data/2.5/weather?q="
-api_key = "19e013c63cb9d49b16be2a2dba0dd61b"
+def get_user_input():
+    try:
+        user_input_file = open('weather.json', 'r')
+        config.logger.info("User input file is present")
 
+        loc = user_input_file.read()
+        user_input_obj = json.loads(loc)
 
-def get_temp_site2(location_list):
-    ''' TO get the temperature from openweathermap API '''
-    temperature_list = []
-    for i in range(0, len(location_list)):
-        try:
-            response = requests.request("GET", base_url + location_list[i] + "&appid=" + api_key)
-            if response.status_code == 200:
-                if response.content is not None:
-                    kelvin_temp = response.json()["main"]["temp"]
-                    celsius_temp = kelvin_temp - 273.15
-                    temperature_list.append(int(celsius_temp))
-            else:
-                config.logger.info("The request was not processed for city")
+        location = user_input_obj['City']
+        variance = user_input_obj['Variance']
+        config.logger.info("The two require fields location and variance have been provided")
 
-        except Exception as e:
-            print(e)
+        # Final city  list to be returned
+        location_list = []
+        for i in range(len(location)):
+            location_list.append(location[i])
 
-    if len(temperature_list) > 0:
-        config.logger.info("Temperature list is not empty")
-        return temperature_list
-    else:
-        config.logger.info("Temperature list is empty")
-        return None
+        if len(location_list) > 0:
+            config.logger.info("City list and variance values are fetched")
+            return location_list, variance
+        else:
+            config.logger.info("For loop failed to append user inputted city values in final list")
+            return None
 
-
-
+    except Exception as e:
+        print(e)
 
