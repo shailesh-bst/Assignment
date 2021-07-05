@@ -1,4 +1,5 @@
 from appium import webdriver
+import config
 
 
 def download_app(desired_cap):
@@ -32,10 +33,12 @@ def download_app(desired_cap):
                 "LinearLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/"
                 "android.view.ViewGroup/android.widget.Button")
             if open_btn.is_enabled():
+                config.logger.info("App installed from playstore")
                 driver.quit()
             else:
                 print("App still not installed")
         else:
+            config.logger.info("App Already installed")
             print("App Already installed")
             driver.quit()
     except Exception as e:
@@ -58,8 +61,9 @@ def login_app(driver):
             "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
             "android.webkit.WebView/android.webkit.WebView/android.view.View[2]/android.view.View/android.view.View[3]"
             "/android.view.View[2]/android.widget.Button[1]")
+        config.logger.info("Inside login method")
         authorize_btn.click()
         return "Successful"
 
     except Exception as e:
-        return e + " Failed"
+        return "Failed"
