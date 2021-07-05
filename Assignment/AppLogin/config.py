@@ -1,4 +1,7 @@
+import logging
 
+logging.basicConfig(filename="..\\logger.log", level=logging.DEBUG, filemode='w')
+logger = logging.getLogger()
 
 desired_cap_playstore = {
     "deviceName": "emulator-5554",
