@@ -25,7 +25,7 @@ def assert_temperature_variance(temp_website, temp_api, variance, city_list):
             if abs(temp_website[i] - temp_api[i]) <= variance:
                 print(str(city_list[i]) + " variance is OK")
             else:
-                print(str(city_list[i]) + " variance mismatch")
+                print(str(city_list[i]) + " variance mismatch. Stopping variance assertion")
                 raise Exception
     except Exception as e:
         print(e)
