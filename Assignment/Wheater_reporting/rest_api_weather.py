@@ -24,10 +24,10 @@ def get_temp_site2(location_list):
             print(e)
 
     if len(temperature_list) > 0:
-        config.logger.info("Temperature list is not empty")
+        config.logger.info(" API Temperature list is not empty")
         return temperature_list
     else:
-        config.logger.info("Temperature list is empty")
+        config.logger.info("API Temperature list is empty")
         return None
 
 
